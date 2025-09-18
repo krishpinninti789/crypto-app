@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Suspense } from "react";
 import { QueryProvider } from "./providers/QueryProvider";
+import { Header } from "./dashboard/components/Header";
+import { Navigation } from "./dashboard/components/NavBar";
+import CryptoFooter from "./dashboard/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,9 +30,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Header />
+        <Navigation />
         <Suspense fallback={null}>
           <QueryProvider>{children}</QueryProvider>
         </Suspense>
+        <CryptoFooter/>
       </body>
     </html>
   );

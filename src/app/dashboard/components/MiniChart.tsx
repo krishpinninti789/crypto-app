@@ -1,6 +1,4 @@
-interface MiniChartProps {
-  data: number[];
-}
+
 
 export function MiniChart({ data }: MiniChartProps) {
   const max = Math.max(...data);

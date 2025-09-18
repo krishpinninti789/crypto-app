@@ -14,6 +14,7 @@ import {
 import { useState } from "react";
 import { LoadingSkeleton } from "./LoadingSkeleton";
 import { MiniChart } from "./MiniChart";
+import Link from "next/link";
 
 function formatCurrency(value: number): string {
   if (value >= 1e12) {
@@ -129,9 +130,6 @@ export function CryptocurrencyTable() {
             The global cryptocurrency market cap today is {formattedMarketCap},
             a <span className="text-green-600 font-medium">▲ 0.8%</span> change
             in the last 24 hours.{" "}
-            <a href="#" className="text-blue-600 hover:underline">
-              Read more
-            </a>
           </p>
         </div>
       </div>
@@ -148,7 +146,7 @@ export function CryptocurrencyTable() {
             All
           </Button>
           <Button variant="ghost" size="sm" className="text-gray-600">
-            📊 Highlights
+            <Link href={"/highlights"}>📊 Highlights</Link>
           </Button>
         </div>
         <div className="flex items-center space-x-2">
@@ -184,33 +182,33 @@ export function CryptocurrencyTable() {
       <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50 border-b border-gray-200">
+            <thead className="bg-vprimary border-b border-gray-200">
               <tr>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                   #
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                   Coin
                 </th>
-                <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-3 text-right text-xs font-medium text-white uppercase tracking-wider">
                   Price
                 </th>
-                <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-3 text-right text-xs font-medium text-white uppercase tracking-wider">
                   1h
                 </th>
-                <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-3 text-right text-xs font-medium text-white uppercase tracking-wider">
                   24h
                 </th>
-                <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-3 text-right text-xs font-medium text-white uppercase tracking-wider">
                   7d
                 </th>
-                <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-3 text-right text-xs font-medium text-white uppercase tracking-wider">
                   24h Volume
                 </th>
-                <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-3 text-right text-xs font-medium text-white uppercase tracking-wider">
                   Market Cap
                 </th>
-                <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-3 text-right text-xs font-medium text-white uppercase tracking-wider">
                   Last 7 Days
                 </th>
               </tr>
@@ -265,14 +263,14 @@ export function CryptocurrencyTable() {
                             </div>
                           )}
                         </div>
-                        <div>
-                          <div className="text-sm font-medium text-gray-900">
+                        <Link href={`/dashboard/coin_details/${crypto.id}`} className="min-w-0">
+                          <div className="text-sm font-medium text-gray-900 hover:underline truncate">
                             {crypto.name}
                           </div>
-                          <div className="text-xs text-gray-500">
+                          <div className="text-xs text-gray-500 uppercase">
                             {crypto.symbol}
                           </div>
-                        </div>
+                        </Link>
                         <Button
                           size="sm"
                           className="bg-green-100 text-green-700 hover:bg-green-200 text-xs px-2 py-1 h-6"
@@ -337,7 +335,7 @@ export function CryptocurrencyTable() {
       <div className="flex  items-center justify-center">
         <div className="flex items-center space-x-2">
           <Button
-            variant="outline"
+            variant="default"
             size="sm"
             onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
             disabled={currentPage === 1}
@@ -363,7 +361,7 @@ export function CryptocurrencyTable() {
               return (
                 <Button
                   key={pageNum}
-                  variant={currentPage === pageNum ? "default" : "outline"}
+                  variant='default'
                   size="sm"
                   onClick={() => setCurrentPage(pageNum)}
                   className={`w-8 h-8 p-0 ${
@@ -379,7 +377,7 @@ export function CryptocurrencyTable() {
           </div>
 
           <Button
-            variant="outline"
+            variant="default"
             size="sm"
             onClick={() =>
               setCurrentPage(Math.min(totalPages, currentPage + 1))

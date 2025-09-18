@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    // Always use the free CoinGecko API endpoint
+    
     const baseUrl = "https://api.coingecko.com/api/v3";
     const url = `${baseUrl}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h,24h,7d`;
 
@@ -36,7 +36,6 @@ export async function GET() {
 
     const data = await response.json();
 
-    // Transform the data to match our interface
     const transformedData = data.map((coin: any, index: number) => ({
       id: coin.id,
       rank: index + 1,
