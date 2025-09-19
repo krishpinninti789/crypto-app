@@ -1,10 +1,10 @@
 import { CryptocurrencyTable } from "./components/CoinsTable";
-import { Header } from "./components/Header";
-import { Navigation } from "./components/NavBar";
+import HighlightStats from "./components/HighlightsStats";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
+      <HighlightStats />
       <main className="container mx-auto px-4 py-6">
         <CryptocurrencyTable />
       </main>

@@ -120,20 +120,6 @@ export function CryptocurrencyTable() {
 
   return (
     <div className="space-y-6">
-      {/* Header Section */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Cryptocurrency Prices by Market Cap
-          </h1>
-          <p className="text-gray-600">
-            The global cryptocurrency market cap today is {formattedMarketCap},
-            a <span className="text-green-600 font-medium">▲ 0.8%</span> change
-            in the last 24 hours.{" "}
-          </p>
-        </div>
-      </div>
-
       {/* Filter Tabs */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-1">
@@ -146,7 +132,7 @@ export function CryptocurrencyTable() {
             All
           </Button>
           <Button variant="ghost" size="sm" className="text-gray-600">
-            <Link href={"/highlights"}>📊 Highlights</Link>
+            <Link href={"/highlight"}>📊 Highlights</Link>
           </Button>
         </div>
         <div className="flex items-center space-x-2">
@@ -263,7 +249,10 @@ export function CryptocurrencyTable() {
                             </div>
                           )}
                         </div>
-                        <Link href={`/dashboard/coin_details/${crypto.id}`} className="min-w-0">
+                        <Link
+                          href={`/dashboard/coin_details/${crypto.id}`}
+                          className="min-w-0"
+                        >
                           <div className="text-sm font-medium text-gray-900 hover:underline truncate">
                             {crypto.name}
                           </div>
@@ -361,7 +350,7 @@ export function CryptocurrencyTable() {
               return (
                 <Button
                   key={pageNum}
-                  variant='default'
+                  variant="default"
                   size="sm"
                   onClick={() => setCurrentPage(pageNum)}
                   className={`w-8 h-8 p-0 ${
